@@ -37,7 +37,7 @@ Ext.define('Admin.view.forms.WizardForm', {
             },
             items:[
                 {
-                    emptyText : 'Username must be unique.'
+                    emptyText : 'Username must/should be unique.'
                 },
                 {
                     emptyText : 'ex: me@somewhere.com',

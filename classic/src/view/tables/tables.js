@@ -73,24 +73,17 @@ Ext.define('Admin.view.tables.tables', {
                         xtype:'splitbutton',
                         text: 'actions',
                         menu:[
-                        {
-                          //  xtype: 'button',
-                            iconCls: 'x-fa fa-pencil-alt',
-                            //handler: 'onClickEvent',
-                            text: 'Edit table'
-                        },
-                        {
-                            iconCls :'x-fa fa-times',
-                            text : 'delete table',
-                        }
-                        // {
-                        //     //xtype: 'button',
-                        //     iconCls: 'x-fa fa-times'
-                        // },
-                        // {
-                        //    // xtype: 'button',
-                        //     iconCls: 'x-fa fa-ban'
-                        //}
+                            {
+                                iconCls: 'x-fa fa-pencil-alt',
+                                text: 'Edit table',
+                                handler: 'onEditTable',
+                            },
+                            {
+                                iconCls: 'x-fa fa-times',
+                                text: 'delete table',
+                                handler: 'onDeleteTable',
+                            }
+                       
                     ]
                     },
                     

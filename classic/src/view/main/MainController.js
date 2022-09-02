@@ -174,5 +174,29 @@ Ext.define('Admin.view.main.MainController', {
 
     onEmailRouteChange: function () {
         this.setCurrentView('email');
+    },
+    onEditTable:function(btn) {
+           
+        var myForm = new Ext.form.Panel({
+            width: 500,
+            height: 400,
+            title: 'Form Window',
+            floating: true,
+            closable : true,
+            //xtype : 'edit_form',
+
+            items: [
+                
+            ]
+           
+        });
+        myForm.show();
+       
+
+       
+    },
+    onDeleteTable:function(){
+        Ext.Msg.confirm('Delete this table', 'Are you sure?',
+        this.onSwitchToModernConfirmed, this);
     }
 });

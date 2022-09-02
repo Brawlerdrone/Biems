@@ -128,6 +128,7 @@ $include-admin-view-profile-userprofilemodel: dynamic(true);;
 $include-admin-view-search-results: dynamic(true);;
 $include-admin-view-search-resultscontroller: dynamic(true);;
 $include-admin-view-search-resultsmodel: dynamic(true);;
+$include-admin-view-tables-popup: dynamic(true);;
 $include-admin-view-tables-tables: dynamic(true);;
 $include-admin-view-widgets-widgeta: dynamic(true);;
 $include-admin-view-widgets-widgetb: dynamic(true);;

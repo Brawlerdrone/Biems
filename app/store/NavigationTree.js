@@ -26,14 +26,14 @@ Ext.define('Admin.store.NavigationTree', {
                 routeId:  'tables', // routeId defaults to viewType
                 leaf: true
             },
-            {
-                text: 'View DBTables',
-                iconCls: 'x-fa fa-desktop',
-                rowCls: 'nav-tree-badge nav-tree-badge-new',
-                viewType: 'dbTable',
-                routeId:  'dbTables', // routeId defaults to viewType
-                leaf: true
-            },
+            // {
+            //     text: 'View DBTables',
+            //     iconCls: 'x-fa fa-desktop',
+            //     rowCls: 'nav-tree-badge nav-tree-badge-new',
+            //     viewType: 'dbTable',
+            //     routeId:  'dbTables', // routeId defaults to viewType
+            //     leaf: true
+            // },
             {
                 text: 'Email',
                 iconCls: 'x-fa fa-paper-plane',
