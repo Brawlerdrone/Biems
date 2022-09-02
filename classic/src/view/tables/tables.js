@@ -27,6 +27,9 @@ Ext.define('Admin.view.tables.tables', {
                     tableName : 'TableThree',
                 },
             ],
+            tbar: [
+                { xtype: 'button', text: 'Truncate selected tables' ,handler: 'truncateselectetables' }
+            ],
             columns: [
 
                 {
@@ -46,6 +49,35 @@ Ext.define('Admin.view.tables.tables', {
                     dataIndex: 'dateCreated',
                     text: 'dateCreated',
                 },
+                {
+                    xtype:'widgetcolumn',
+                   
+                    widget: {
+                        xtype:'splitbutton',
+                        text: 'actions',
+                        menu:[
+                        {
+                          //  xtype: 'button',
+                            iconCls: 'x-fa fa-pencil-alt',
+                            //handler: 'onClickEvent',
+                            text: 'Edit table'
+                        },
+                        {
+                            iconCls :'x-fa fa-times',
+                            text : 'delete table',
+                        }
+                        // {
+                        //     //xtype: 'button',
+                        //     iconCls: 'x-fa fa-times'
+                        // },
+                        // {
+                        //    // xtype: 'button',
+                        //     iconCls: 'x-fa fa-ban'
+                        //}
+                    ]
+                    },
+                    
+                }
                
                
             ],
@@ -56,17 +88,18 @@ Ext.define('Admin.view.tables.tables', {
                 model : 'SIMPLE',
                 type : 'checkboxmodel'
             },
-            buttons: [
+            // buttons: [
 
-                {
-                    text : 'Select All',
+            //     {
+            //         text : 'Select All',
+            //         iconCls: 'x-fa fa-pencil-alt',
 
-                    handler:function()
-                    {
-                        Ext.getCmp()
-                    }
-                }
-            ]
+            //         handler:function()
+            //         {
+            //             Ext.getCmp()
+            //         }
+            //     }
+            // ]
         }
     ]
     
