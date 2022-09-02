@@ -27,8 +27,24 @@ Ext.define('Admin.view.tables.tables', {
                     tableName : 'TableThree',
                 },
             ],
+            
             tbar: [
-                { xtype: 'button', text: 'Truncate selected tables' ,handler: 'truncateselectetables' }
+                '->',
+                
+                {
+                    xtype: 'button',
+                    text: 'Truncate selected tables',
+                    handler: 'truncateselectetables',
+                    ui: 'soft-blue'
+                },
+
+                {
+                    xtype: 'button',
+                    text: 'add new table',
+                    handler: 'add new tables',
+                    ui: 'soft-blue'
+                }
+
             ],
             columns: [
 
@@ -51,6 +67,7 @@ Ext.define('Admin.view.tables.tables', {
                 },
                 {
                     xtype:'widgetcolumn',
+                    width : 150,
                    
                     widget: {
                         xtype:'splitbutton',
