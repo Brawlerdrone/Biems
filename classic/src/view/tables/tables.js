@@ -2,10 +2,12 @@ Ext.define('Admin.view.tables.tables', {
     extend : 'Ext.panel.Panel',
 
     xtype : 'tables',
+    controller:'main',
 
     title: 'My Tables',
 
     items : [
+        
         {
             xtype : 'gridpanel',
            // title : 'All tables in the DB',
@@ -38,12 +40,20 @@ Ext.define('Admin.view.tables.tables', {
                     ui: 'soft-blue'
                 },
 
+                // {
+                   
+                //     text: 'add table',
+                //     frm: 'add Table',
+                //     handler: 'onAddTable',
+                //     ui: 'soft-blue'
+                // }
                 {
-                    xtype: 'button',
-                    text: 'add new table',
-                    handler: 'add new tables',
+                   
+                    text: 'addNewTable',
+                    frm: 'addTable',
+                    handler: 'onAddTable',
                     ui: 'soft-blue'
-                }
+                },
 
             ],
             columns: [
@@ -76,6 +86,7 @@ Ext.define('Admin.view.tables.tables', {
                             {
                                 iconCls: 'x-fa fa-pencil-alt',
                                 text: 'Edit table',
+                                frm: 'editTable',
                                 handler: 'onEditTable',
                             },
                             {

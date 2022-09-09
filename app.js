@@ -12,7 +12,29 @@ Ext.application({
     // have specific requirements on each other, you may need to still require them
     // explicitly.
     //
+
+    
     requires: [
         'Admin.*'
-    ]
+    ],
+
+    
 });
+
+function funcShowCustomizableWindow(title, width, childObject, winXtype, btn=true) {
+    var view = Ext.apply({
+        xtype: winXtype,
+        title: title,
+        bodyPadding: 3,
+        btn:btn,
+        animateTarget: btn,
+        width: width,
+        autoScroll: true,
+        items: [
+            Ext.apply(
+                childObject
+            )
+        ]
+    });
+    Ext.create(view);
+}

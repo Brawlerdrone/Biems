@@ -175,28 +175,126 @@ Ext.define('Admin.view.main.MainController', {
     onEmailRouteChange: function () {
         this.setCurrentView('email');
     },
-    onEditTable:function(btn) {
+    // onEditTable:function(btn) {
            
-        var myForm = new Ext.form.Panel({
-            width: 500,
-            height: 400,
-            title: 'Form Window',
-            floating: true,
-            closable : true,
-            //xtype : 'edit_form',
+    //     var myForm = new Ext.form.Panel({
+    //         width: 500,
+    //         height: 400,
+    //         title: 'Form Window',
+    //         floating: true,
+    //         closable : true,
+    //         //xtype : 'edit_form',
 
-            items: [
-                
-            ]
+    //         items: [
+    //             {padding :10},
+    //             {
+    //                 xtype: 'textfield',
+    //                 fieldLabel: 'To'
+    //             },
+    //             {
+    //                 xtype: 'textfield',
+    //                 fieldLabel: 'Subject'
+    //             },
+    //             // {
+    //             //     xtype: 'htmleditor',
+                    
+    //             //     // Make tips align neatly below buttons.
+    //             //     buttonDefaults: {
+    //             //         tooltip: {
+    //             //             align: 't-b',
+    //             //             anchor: true
+    //             //         }
+    //             //     },
+                    
+                    
+    //             //     labelAlign: 'top',
+    //             //     fieldLabel: 'Message'
+    //             // }
+    //         ],
            
-        });
-        myForm.show();
+    //     });
+    //     myForm.show();
        
 
        
-    },
+    // },
     onDeleteTable:function(){
         Ext.Msg.confirm('Delete this table', 'Are you sure?',
         this.onSwitchToModernConfirmed, this);
+    },
+    // onEditTable:function(){
+    //     this.setCurrentView('editTable');
+        
+    // },
+    onEditTable: function (btn) {
+       // var winTitle = btn.winTitle,
+           // winWidth = btn.winWidth,
+           // childObject = Ext.widget(btn.childXtype);
+        //Ext.apply(childObject, {frame: 'true'});
+        //childObject.setUI(childObject.ui + '-framed');
+        //childObject.down('hiddenfield[name=personnel_type]').setValue('ctrregistrysponsor');
+        frm=btn.frm,
+        editTable = Ext.widget(frm);
+        button = btn.up('button')
+        console.log(button);
+        record = button.getWidgetRecord();
+        console.log(record);
+        editTable.loadRecord(record);
+        funcShowCustomizableWindow('editTable', '60%', editTable, 'customizablewindow');
+    },
+    onAddTable: function(btn) {
+
+        frm = btn.frm,
+        addTable = Ext.widget(frm);
+        funcShowCustomizableWindow('addTable', '60%', addTable , 'customizablewindow');
+    },
+    addTable: function(btn){
+
+        frm = btn.up('addTable');
+        console.log(frm.down('textfield[name=name]').getValue());
+
+        if (frm.isValid()) {
+            frm.submit({
+                url: 'http://127.0.0.1/Laravel/TaskOne/public/api/edit-table',
+                params: {
+                    // table_name: table,
+                    // application_code: application_code,
+                    // mir_id: mir_id,
+                    // _token: token
+                },
+                waitMsg: 'Please wait...',
+                // headers: {
+                //     'Authorization': 'Bearer ' + access_token
+                // },
+                success: function (form, action) {
+                    var response = Ext.decode(action.response.responseText),
+                        success = response.success,
+                        //record_id = response.record_id,
+                        message = response.message;
+                    if (success == true || success === true) {
+                        // toastr.success(message, "Success Response");
+                        // form_xtype.down('hiddenfield[name=id]').setValue(record_id);
+                        //store.removeAll();
+                        //store.load();
+                    } else {
+                       // toastr.error(message, 'Failure Response');
+                    }
+                },
+                failure: function (form, action) {
+                    var resp = action.result;
+                    //toastr.error(resp.message, 'Failure Response');
+                }
+            });
+        }
     }
+    // addTable:function(btn) {
+    //     frm=btn.frm,
+    //     addTable = Ext.widget(frm);
+    //     funcShowCustomizableWindow('addTable', '60%', addTable , 'customizablewindow');
+    // }
+    // onEditTable: function (menu, item) {
+    //     if (item && item.routeId === 'editTable') {
+    //         this.setCurrentView(item.routeId, item.params);
+    //     }
+    // },
 });
