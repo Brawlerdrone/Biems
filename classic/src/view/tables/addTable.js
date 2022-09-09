@@ -134,20 +134,19 @@ Ext.define('Admin.view.tables.addTable', {
     },
 
     items: [
-        {
-            xtype : 'hiddenfield',
-            name : 'id'
-        },
+        // {
+        //     xtype : 'hiddenfield',
+        //     name : 'id'
+        // },
         {
             xtype: 'textfield',
             name: 'name',
-            
             fieldLabel: 'tablename'
         },
         {
             xtype: 'textfield',
             name: 'description',
-            fieldLabel: 'Subject'
+            fieldLabel: 'description'
         },
         // {
         //     xtype: 'htmleditor',
@@ -189,6 +188,7 @@ Ext.define('Admin.view.tables.addTable', {
                 text: 'Discard',
                 //handler nitaweka yangu custom
                 //handler: 'onComposeDiscardClick'
+                handler : 'clearInputFields',
             },
             {
                 xtype: 'button',

@@ -1,28 +1,40 @@
-Ext.define('Admin.view.tables.tables', {
-    extend : 'Ext.panel.Panel',
+Ext.define('Admin.view.tablesgrid', {
+    extend : 'Ext.grid.Panel',
+    
+    xtype : 'tablesgrid',
 
-    xtype : 'tables',
-    controller:'main',
+    title : 'tables',
 
-    title: 'My Tables',
-
-    store :{
-        type : 'extraApi',
-    },
-
-    items : [
+    
+    // store: {
+    //     type: 'tables',
+    //     // model: 'nancy.model.SkillsDetail',
+    
         
-        {
-            xtype : 'gridpanel',
+    // },
+    //items : [
+        
+    
+           // xtype : 'gridpanel',
            // title : 'All tables in the DB',
             
-           
+            // store :{
+            //     type : 'extraApi',
+            // },
+            store : { type : 'extraApi' },
             // store : [
             //     {
-            //         name : 'userone',
-            //         username : 'usernone',
+            //         identifier : '1',
+            //         tableName : 'TableOne',
             //     },
-               
+            //     {
+            //         identifier : '2',
+            //         tableName : 'TableTwo',
+            //     },
+            //     {
+            //         identifier : '3',
+            //         tableName : 'TableThree',
+            //     },
             // ],
             
             tbar: [
@@ -51,55 +63,43 @@ Ext.define('Admin.view.tables.tables', {
                 },
 
             ],
-            // bbar: [{
-            //     xtype: 'pagingtoolbar',
+            bbar: [{
+                xtype: 'pagingtoolbar',
         
 
 
-            //     store: {
-            //         type: 'extraApi',
-            //         // model: 'nancy.model.SkillsDetail',
+                store: {
+                    type: 'tablest',
+                    // model: 'nancy.model.SkillsDetail',
                 
                     
-            //     },
-            // }
-            // ],
-            // bbar: [{
-            //     xtype: 'pagingtoolbar',
-        
-            //     store: {
-            //         type: 'extraApi',
-            //         // model: 'nancy.model.SkillsDetail',
-                
-                    
-            //     },
-            // }
-            // ],
+                },
+            }
+            ],
             columns: [
 
-                // {
-                //     xtype: 'gridcolumn',
-                //     width: 40,
-                //     dataIndex: 'identifier',
-                //     text: '#'
-                // },
                 {
-                    xtype: 'gridcolumn',
-                   // flex: 1,
+                    //xtype: 'gridcolumn',
+                    width: 40,
+                    dataIndex: 'description',
+                    text: '#',
+                    value:'Testing'
+                },
+                {
+                   // xtype: 'gridcolumn',
+                   flex: 1,
                     text: 'name',
                     dataIndex: 'name',
                     
                    
 
                 }, 
-                {
-                    xtype: 'gridcolumn',
-                    flex: 1,
-                    dataIndex: 'username',
-                    text: 'username',
-                },
-
-                
+                // {
+                //     xtype: 'gridcolumn',
+                //     flex: 1,
+                //     dataIndex: 'description',
+                //     text: 'description',
+                // },
                 // {
                 //     xtype: 'gridcolumn',
                 //     flex: 1,
@@ -152,18 +152,9 @@ Ext.define('Admin.view.tables.tables', {
             //         }
             //     }
             // ]
-        },
+        
 
-    //   // { xtype : 'tablesgrid' },
-    ],
-   
-});
+      // { xtype : 'tablesgrid' },
+   // ]
 
-// Ext.define('Admin.view.tables.tables',{
-//     extend: 'Ext.grid.Panel', 
-
-//     xtype : 'tables',
-
-
-//     title : 'Hi there',
-// });
+})
