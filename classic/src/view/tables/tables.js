@@ -52,7 +52,7 @@ Ext.define('Admin.view.tables.tables', {
                 {
                     text: "#",
                     dataIndex: 'id',
-                    hidden: true,
+                    hidden: false,
                     width: 35 
                 },
                
@@ -81,35 +81,57 @@ Ext.define('Admin.view.tables.tables', {
                     text : 'Date Updated'
                 },
 
-                {
-                    xtype:'widgetcolumn',
-                    width : 150,
+                // {
+                //     xtype:'widgetcolumn',
+                //     width : 150,
                    
-                    widget: {
-                        xtype:'splitbutton',
-                        text: 'actions',
-                        menu:[
-                            {
-                                iconCls: 'x-fa fa-pencil-alt',
-                                text: 'Edit table',
-                                frm: 'editTable',
-                                handler: 'onEditTable',
-                            },
-                            {
-                                iconCls: 'x-fa fa-times',
-                                text: 'delete table',
-                                handler: 'onDeleteTable',
-                            }
+                //     widget: {
+                //         xtype:'actioncolumn',
+                //         text: 'actions',
+                //         menu:[
+                //             {
+                //                 iconCls: 'x-fa fa-pencil-alt',
+                //                 text: 'Edit table',
+                //                 frm: 'editTable',
+                //                 handler: 'onEditTable',
+                //             },
+                //             {
+                //                 iconCls: 'x-fa fa-times',
+                //                 text: 'delete table',
+                //                 handler: 'onDeleteTable',
+                //                 //xtype : 'button'
+                //             }
                        
-                    ]
-                    },
+                //     ]
+                //     },
                     
-                }
-                
+                // }
+                { 
+                    text: 'Action',
+                       xtype: 'actioncolumn',
+                    sortable: false,
+                    menuDisabled: false,
+                    items: [{
+                        // iconCls: 'cell-editing-delete-row',
+                        iconCls: 'fas fa-minus-circle',
+                        tooltip: 'Delete Table',
+                        handler: 'onDeleteTable',
+                      
+                    }]
+                    } 
                
             ],
 
-            
+            bbar: [{
+                xtype: 'pagingtoolbar',
+                bind:{
+                    store: '{TableListStore}'
+                },
+                displayInfo: true,
+                displayMsg: 'Displaying {0} to {1} of {2} &nbsp;records ',
+                emptyMsg: "No records to display&nbsp;"
+            }],
+
             id: 'selectTables',
             selModel: {
                 injectCheckbox : 'first',

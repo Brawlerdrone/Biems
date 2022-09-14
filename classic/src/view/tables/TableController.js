@@ -48,41 +48,48 @@ Ext.define('Admin.view.tables.TableController', {
     },
 
    //Promt to delete a table
-   onDeleteTable:function(){
-    Ext.Msg.confirm('Delete this table', 'Are you sure?',
-    this.onDeleteEvent, this);
+//    onDeleteTable:function(){
+//     Ext.Msg.confirm('Delete this table', 'Are you sure?',
+//     this.onDeleteEvent, this);
 
 
 
+//     },
+    onDeleteTable: function(grid, rowIndex, colIndex,del) {
+        console.log(grid.up('grid'));
+        var cell  = grid.up('grid');
+        
+        var rec = cell.getStore().getAt(rowIndex);
+        console.log(rec);
+        alert("Delete " + rec.get('name'));
+        // Ext.message.confirm('Delete' + rec.get('name'),
+        
+        
+        // )
+          Id = rec.get('id'),
+        Ext.Ajax.request({
+            url: 'http://localhost/Laravel/TaskOne/public/api/delete-table/',
+            method: 'GET',
+            // timeout: 60000n
+            params:
+            {
+                id: Id // loads student whose Id is 1
+            },
+            headers:
+            {
+                // 'Content-Type': 'application/json'
+            },
+            success: function (response) {
+                Ext.Msg.alert('data deleted successfully');
+            
+            },
+            failure: function (response) {
+                Ext.Msg.alert('Status', 'Request Failed.');
+
+            }
+        });
     },
 
-    // onDeleteEvent:function(panel,rowIndex){
-
-    //     var rec = panel.getStore().getAt(rowIndex);
-
-    //     console.log(rec);
-
-    // }
-    onDeleteEvent : function(){
-
-        //find a way to fetch the id of the record in question
-
-
-        var frm = this.getView();
-
-        // var tableStore = frm.getSelectionModel().getSelection();
-
-        console.log(tableStore);
-
-        //pass it to an ajax request
-        Ext.Ajax.request({
-
-            url : 'http://localhost/Laravel/TaskOne/public/api/delete-table/' + id ,
-            method : 'GET',
-
-
-        })
-
-    }
+    
     
 })

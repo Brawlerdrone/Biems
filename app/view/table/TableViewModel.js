@@ -68,7 +68,7 @@ Ext.define('Admin.view.table.TableViewModel', {
             model : 'Admin.model.Table',
             autoLoad : true ,
             autoSynC : true ,
-            //pageSize : 10,
+            pageSize : 10,
             
             proxy : 
             {
