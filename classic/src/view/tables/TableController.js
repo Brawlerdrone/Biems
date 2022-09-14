@@ -70,7 +70,7 @@ Ext.define('Admin.view.tables.TableController', {
 
         var frm = this.getView();
 
-        var tableStore = frm.getSelectionModel().getSelection();
+        // var tableStore = frm.getSelectionModel().getSelection();
 
         console.log(tableStore);
 
