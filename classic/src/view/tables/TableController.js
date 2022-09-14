@@ -90,6 +90,60 @@ Ext.define('Admin.view.tables.TableController', {
         });
     },
 
+    OnUpdateClick: function(grid, rowIndex,frm,btn) 
+    {
+        var rec = grid.getStore().getAt(rowIndex);
+        frm=btn.frm;
+        console.log(rec.get('name'));
+        editTable = Ext.widget(frm);
+        console.log(editTable);
+        
+        // var updatewindow = Ext.widget('editTable');
+        // var updateform= updatewindow.down('form');
+        // updateform.getForm().loadRecord(rec);
+        // console.log(updateform);
+        // updatewindow.setTitle('update');  
+        // updatewindow.show();
+    
+    },
+    onEditTable: function (btn) {
+        // var winTitle = btn.winTitle,
+            // winWidth = btn.winWidth,
+            // childObject = Ext.widget(btn.childXtype);
+         //Ext.apply(childObject, {frame: 'true'});
+         //childObject.setUI(childObject.ui + '-framed');
+         //childObject.down('hiddenfield[name=personnel_type]').setValue('ctrregistrysponsor');
+         frm=btn.frm,
+         editTable = Ext.widget(frm);
+         button = btn.up('button')
+         console.log(button);
+         record = button.getWidgetRecord();
+         console.log(record);
+         editTable.loadRecord(record);
+         funcShowCustomizableWindow('editTable', '60%', editTable, 'customizablewindow');
+     },
+
+    // onEditTable :function(btn,grid, rowIndex ,frm)
+
+    // {
+    //     // var rec = grid.getStore().getAt(rowIndex);
+    //     //     var updatewindow = Ext.widget('editTable');
+    //     //     console.log(updatewindow)
+    //         // var updateform= updatewindow.down('form');
+    //         // updateform.getForm().loadRecord(rec);
+    //         // console.log(updateform);
+    //         // updatewindow.setTitle('update');  
+    //         // updatewindow.show();
+    //     frm=btn.frm,
+    //     editTable = Ext.widget(frm);
+    //     button = btn.up('button')
+    //     console.log(button);
+    //     record = button.getWidgetRecord();
+    //     console.log(record);
+    //     editTable.loadRecord(record);
+    //     funcShowCustomizableWindow('editTable', '60%', editTable, 'customizablewindow');
+    // }
+
     
     
 })

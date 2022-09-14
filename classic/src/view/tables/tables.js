@@ -48,7 +48,8 @@ Ext.define('Admin.view.tables.tables', {
 
             ],
             
-            columns: [
+            columns: 
+            [
                 {
                     text: "#",
                     dataIndex: 'id',
@@ -105,7 +106,7 @@ Ext.define('Admin.view.tables.tables', {
                 //     ]
                 //     },
                     
-                // }
+                // },
                 { 
                     text: 'Action',
                        xtype: 'actioncolumn',
@@ -118,7 +119,24 @@ Ext.define('Admin.view.tables.tables', {
                         handler: 'onDeleteTable',
                       
                     }]
-                    } 
+                },
+                {
+                    text: 'Option',
+                    xtype: 'actioncolumn',
+                 sortable: false,
+                 menuDisabled: false,
+                 items: 
+                    [{
+                        iconCls: 'far fa-edit',
+                        label: 'edit',
+                        xtype:'button',
+                        tooltip: 'Update Table',
+                        frm: 'editTable',
+                        handler: 'OnUpdateClick',
+                    
+                    }],
+                }
+
                
             ],
 

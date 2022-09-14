@@ -13,9 +13,9 @@ Ext.define('Admin.view.tables.editTable', {
         type: 'emailcompose'
     },
 
-    controller: 'emailcompose',
+   // controller: 'emailcompose',
 
-    cls: 'email-compose',
+    //cls: 'email-compose',
 
     layout: {
         type:'vbox',
