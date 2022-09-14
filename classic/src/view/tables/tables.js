@@ -3,7 +3,7 @@ Ext.define('Admin.view.tables.tables', {
 
     xtype : 'tables',
     //change  the controller to that handles these actions
-    controller:'table',
+    controller:'main',
 
     title: 'My Tables',
 
@@ -23,10 +23,9 @@ Ext.define('Admin.view.tables.tables', {
 
             bind : {
 
-                //store : '{TableListStore}'
                 store : '{TableListStore}'
             },
-            xtype : 'grid',
+            xtype : 'gridpanel',
             
             tbar: [
                 '->',
@@ -110,28 +109,7 @@ Ext.define('Admin.view.tables.tables', {
                
             ],
 
-            bbar : [
-                { 
-                    xtype : 'pagingtoolbar',
-                    
-                    //width : '100%',
-                    bind : {
-                        store : '{TableListStore}'
-                    },
-                    
-                    displayInfo: true ,
-                    displayMsg : 'Displaying {0} to {1} of {2} &nbsp;records ',
-                    emptyMsg: "No records to display&nbsp;",
-                    // beforeLoad: function(){
-                    //     bind : {
-
-                    //         store : '{TableListPagingStore}'
-                    //     }
-                    // }
-                }
-
-
-            ],
+            
             id: 'selectTables',
             selModel: {
                 injectCheckbox : 'first',
