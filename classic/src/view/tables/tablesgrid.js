@@ -21,7 +21,7 @@ Ext.define('Admin.view.tablesgrid', {
             // store :{
             //     type : 'extraApi',
             // },
-            store : { type : 'extraApi' },
+            //store : { type : 'extraApi' },
             // store : [
             //     {
             //         identifier : '1',
@@ -63,19 +63,36 @@ Ext.define('Admin.view.tablesgrid', {
                 },
 
             ],
-            bbar: [{
-                xtype: 'pagingtoolbar',
+            listeners: {
+                beforerender: {
+                    fn: 'setGridStore',
+                    config: {
+                        pageSize: 1000,
+                        storeId: 'AgeAnalysisStr',
+                        proxy: {
+                            url: 'http://localhost/Laravel/TaskOne/public/api/all-tables',
+                            // extraParams:{
+                            //   is_config:1,
+                            //     table_name: 'par_ageanalysisdays_span'
+                            // }
+                        }
+                    },
+                    isLoad: true
+                }
+            },
+            // bbar: [{
+            //     xtype: 'pagingtoolbar',
         
 
 
-                store: {
-                    type: 'tablest',
-                    // model: 'nancy.model.SkillsDetail',
+            //     store: {
+            //         type: 'tablest',
+            //         // model: 'nancy.model.SkillsDetail',
                 
                     
-                },
-            }
-            ],
+            //     },
+            // }
+            // ],
             columns: [
 
                 {

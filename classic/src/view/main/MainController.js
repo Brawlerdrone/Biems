@@ -249,74 +249,35 @@ Ext.define('Admin.view.main.MainController', {
 
         frm = btn.frm,
         addTable = Ext.widget(frm);
+
         funcShowCustomizableWindow('addTable', '60%', addTable , 'customizablewindow');
     },
-    addTable: function(btn){
-
-        frm = btn.up('addTable');
-        window = frm.up('window');
-        popup =Ext.widget('addTable');
-       // tablename = 
-        console.log(frm.down('textfield[name=name]').getValue());
-    
-
-        if (frm.isValid()) {
-            frm.submit({
-
-                url: 'http://127.0.0.1:8000/api/create-table',
-                method : 'POST',
-                // params: {
-                //     //table_name: tables,
-                //     // application_code: application_code,
-                //     // mir_id: mir_id,
-                //     // _token: token
-                // },
-                waitMsg: 'Please wait...',
-                // headers: {
-                //     'Authorization': 'Bearer ' + access_token
-                // },
-                // success: function (form, action) {
-                //     var response = Ext.decode(action.response.responseText),
-                //         success = response.success,
-                //         //record_id = response.record_id,
-                //         message = response.message;
-                //     if (success == true || success === true) {
-                //         // toastr.success(message, "Success Response");
-                //         // form_xtype.down('hiddenfield[name=id]').setValue(record_id);
-                //         //store.removeAll();
-                //         //store.load();
-                //     } else {
-                //        // toastr.error(message, 'Failure Response');
-                //     }
-                // },
-
-                success : function(form , action) {
-                   //window.close();
-                   //window.destroy();
-                   //console.log(window);
-                   //this.getView().destroy();
-                    //Ext.Msg.Alert('data added successfully')
-                    //popup.close();
-                    Ext.Msg.alert('data added successfully');
-                },
-                failure: function (form, action) {
-                    var resp = action.result;
-                    //toastr.error(resp.message, 'Failure Response');
-                }
-            });
-        }
-    },
+   
     clearInputFields: function(btn){
         frm = btn.up('addTable');
         nameInputFields = frm.down('textfield[name=name]').getValue();
         console.log(nameInputFields);
 
-        // if(nameInputFields )
-        // {
-        //     nameInputFields.clear();
-        // }
+        if(nameInputFields == 0 )
+        {
+            nameInputFields.clear();
+        }
         
-    }
+    },
+    setGridStore: function (me, options) {
+        // console.log(me);
+        var config = options.config,
+            isLoad = options.isLoad,
+            toolbar = me.down('pagingtoolbar'),
+            store = Ext.create('Admin.store.abstract.AbstractStore', config);
+        me.setStore(store);
+       // console.log(store);
+        toolbar.setStore(store);
+        if (isLoad === true || isLoad == true) {
+            store.removeAll();
+            store.load();
+        }
+    },
     // addTable:function(btn) {
     //     frm=btn.frm,
     //     addTable = Ext.widget(frm);

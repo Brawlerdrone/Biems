@@ -2,28 +2,31 @@ Ext.define('Admin.view.tables.tables', {
     extend : 'Ext.panel.Panel',
 
     xtype : 'tables',
-    controller:'main',
+    //change  the controller to that handles these actions
+    controller:'table',
 
     title: 'My Tables',
 
-    store :{
-        type : 'extraApi',
-    },
+    viewModel : { type :'tableviewmodel'},
+
+    // store : {
+
+    //     xtype : 'tableList',
+    // },
+
+  
 
     items : [
         
-        {
-            xtype : 'gridpanel',
-           // title : 'All tables in the DB',
-            
-           
-            // store : [
-            //     {
-            //         name : 'userone',
-            //         username : 'usernone',
-            //     },
-               
-            // ],
+        
+        {   
+
+            bind : {
+
+                //store : '{TableListStore}'
+                store : '{TableListStore}'
+            },
+            xtype : 'grid',
             
             tbar: [
                 '->',
@@ -35,13 +38,7 @@ Ext.define('Admin.view.tables.tables', {
                     ui: 'soft-blue'
                 },
 
-                // {
-                   
-                //     text: 'add table',
-                //     frm: 'add Table',
-                //     handler: 'onAddTable',
-                //     ui: 'soft-blue'
-                // }
+                
                 {
                    
                     text: 'addNewTable',
@@ -51,61 +48,40 @@ Ext.define('Admin.view.tables.tables', {
                 },
 
             ],
-            // bbar: [{
-            //     xtype: 'pagingtoolbar',
-        
-
-
-            //     store: {
-            //         type: 'extraApi',
-            //         // model: 'nancy.model.SkillsDetail',
-                
-                    
-            //     },
-            // }
-            // ],
-            // bbar: [{
-            //     xtype: 'pagingtoolbar',
-        
-            //     store: {
-            //         type: 'extraApi',
-            //         // model: 'nancy.model.SkillsDetail',
-                
-                    
-            //     },
-            // }
-            // ],
+            
             columns: [
-
-                // {
-                //     xtype: 'gridcolumn',
-                //     width: 40,
-                //     dataIndex: 'identifier',
-                //     text: '#'
-                // },
+                {
+                    text: "#",
+                    dataIndex: 'id',
+                    hidden: true,
+                    width: 35 
+                },
+               
                 {
                     xtype: 'gridcolumn',
-                   // flex: 1,
+                    flex: 1,
                     text: 'name',
                     dataIndex: 'name',
-                    
-                   
-
                 }, 
                 {
                     xtype: 'gridcolumn',
                     flex: 1,
-                    dataIndex: 'username',
-                    text: 'username',
+                    dataIndex: 'description',
+                    text: 'Description',
+                },
+                {
+                    xtype : 'gridcolumn',
+                    flex : 1,
+                    dataIndex : 'created_at',
+                    text : 'Date Created'
+                },
+                {
+                    xtype : 'gridcolumn',
+                    flex : 1,
+                    dataIndex : 'updated_at',
+                    text : 'Date Updated'
                 },
 
-                
-                // {
-                //     xtype: 'gridcolumn',
-                //     flex: 1,
-                //     dataIndex: 'dateCreated',
-                //     text: 'dateCreated',
-                // },
                 {
                     xtype:'widgetcolumn',
                     width : 150,
@@ -130,40 +106,129 @@ Ext.define('Admin.view.tables.tables', {
                     },
                     
                 }
-               
+                
                
             ],
-            // id: 'selectTables',
-            // selModel: {
-            //     injectCheckbox : 'first',
-            //     checkOnly : true ,
-            //     model : 'SIMPLE',
-            //     type : 'checkboxmodel'
-            // },
-            // buttons: [
 
-            //     {
-            //         text : 'Select All',
-            //         iconCls: 'x-fa fa-pencil-alt',
+            bbar : [
+                { 
+                    xtype : 'pagingtoolbar',
+                    
+                    //width : '100%',
+                    bind : {
+                        store : '{TableListStore}'
+                    },
+                    
+                    displayInfo: true ,
+                    displayMsg : 'Displaying {0} to {1} of {2} &nbsp;records ',
+                    emptyMsg: "No records to display&nbsp;",
+                    // beforeLoad: function(){
+                    //     bind : {
 
-            //         handler:function()
-            //         {
-            //             Ext.getCmp()
-            //         }
-            //     }
-            // ]
+                    //         store : '{TableListPagingStore}'
+                    //     }
+                    // }
+                }
+
+
+            ],
+            id: 'selectTables',
+            selModel: {
+                injectCheckbox : 'first',
+                checkOnly : true ,
+                model : 'SIMPLE',
+                type : 'checkboxmodel'
+            },
+
+            
+           
         },
 
-    //   // { xtype : 'tablesgrid' },
-    ],
+        //this.callParent(arguments)
    
+    ],
+    // initComponent: function () {
+    //     Ext.apply(this,
+    //     {
+    //         plugins: [Ext.create('Ext.grid.plugin.RowEditing',
+    //         {
+    //             clicksToEdit: 2
+    //         })],
+
+    //         columns: [{
+    //             text: "#",
+    //             dataIndex: 'id',
+    //             hidden: true,
+    //             width: 35
+    //         },
+    //         {
+    //             text: "tableName",
+    //             flex: 1,
+    //             dataIndex: 'name',
+    //             editor:
+    //             {
+    //                 // defaults to textfield if no xtype is supplied
+    //                 allowBlank: false
+    //             }
+    //         },
+    //         {
+    //             text: "Description",
+    //             flex: 1,
+    //             dataIndex: 'description',
+    //             editor:
+    //             {
+    //                 allowBlank: true
+    //             }
+    //         },
+    //         // {
+    //         //     text: "Date Created",
+    //         //     flex: 1,
+    //         //     dataIndex: 'created_at',
+    //         //     editor:
+    //         //     {
+    //         //         allowBlank: true
+    //         //     }
+    //         // },
+    //         {
+    //             xtype: 'datecolumn',
+    //             header: "Date Created",
+    //             width: 135,
+    //             dataIndex: 'created_at',
+    //             editor:
+    //             {
+    //                 xtype: 'datefield',
+    //                 allowBlank: true
+    //             },
+    //             renderer: Ext.util.Format.dateRenderer('d/m/Y')
+    //         },
+    //         {
+    //             xtype: 'datecolumn',
+    //             header: "Date updated",
+    //             width: 135,
+    //             dataIndex: 'updated_at',
+    //             editor:
+    //             {
+    //                 xtype: 'datefield',
+    //                 allowBlank: true
+    //             },
+    //             renderer: Ext.util.Format.dateRenderer('d/m/Y')
+    //         }
+    //        ],
+    //         // tbar: [{
+    //         //     text: 'Add Student',
+    //         //     iconCls: 'fa-plus',
+    //         //     handler: 'onAddClick'
+    //         // }, {
+    //         //     itemId: 'removeStudent',
+    //         //     text: 'Remove Student',
+    //         //     iconCls: 'fa-times',
+    //         //     reference: 'btnRemoveStudent',
+    //         //     handler: 'onRemoveClick',
+    //         //     disabled: true
+    //         // }]
+    //     });
+
+    //     this.callParent(arguments);
+    // }
 });
 
-// Ext.define('Admin.view.tables.tables',{
-//     extend: 'Ext.grid.Panel', 
-
-//     xtype : 'tables',
-
-
-//     title : 'Hi there',
-// });

@@ -5,8 +5,10 @@ Ext.define('Admin.model.Table', {
 
     fields : [
 
-        {name : 'name',
-        name : 'description'}
+        {name : 'name'},
+        // {name : 'description'},
+        // {name : 'created at'},
+        // {name : 'updated at'}
 
     ]
 });
